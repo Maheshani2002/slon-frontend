@@ -1,0 +1,503 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slon Saimon</title>
+</head>
+
+<body id="home" data-bs-spy="scroll" data-bs-target=".navbar">
+
+  <ng-template #content let-modal class="modal-dialog">
+
+    <div class="modal-header">
+      <h4 class="modal-title" style="color: black;" id="modal-basic-title">{{activeTitle}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6" *ngFor="let item of activeList">
+            <div class="service">
+              <img src={{item.image}} alt="">
+              <div class="content text-center">
+                <h5 style="color: black;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                  {{item.name}}</h5>
+                <h6 class="text-center"
+                  style="color: black;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                  LKR {{item.price}}</h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </ng-template>
+
+  <router-outlet></router-outlet>
+  <!-- NAVBAR -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">My Salon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#hiring">Hiring</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#reviews">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#appointment">Appointment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact-us">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#payment-options">Payment Options</a>
+          </li>
+        </ul>
+        <div *ngIf="name == ''">
+          <a routerLink="/auth" routerLinkActive="false" class="btn btn-outlined-brand ms-lg-3">Register</a>
+        </div>
+        <div *ngIf="name != ''" class="nav-item">
+          <button (click)="signout()" class="btn btn-outlined-brand ms-lg-3">Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="display-3">
+            Let your hair do the talking
+          </h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. t amet fugit aperiam a aliquid perfeniam eius et
+            nam?
+          </p>
+          <a href="#appointment" class="btn btn-brand">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //HERO -->
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-5">
+          <img src="assets/img/about_img.png" alt="">
+        </div>
+        <div class="col-lg-4 offset-lg-1">
+          <h6>About Us</h6>
+          <h1>About Our Salon</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae natus itaque optio maiores recusandae
+            eligendi quia molestias, quisquam facilis magnam reprehenderit totam deleniti aliquid, hic consequatur
+            alias
+            doloremque voluptatum quam?</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae natus itaque optio maiores recusandae
+            eligendi quia molestias, quisquam facilis magnam reprehenderit totam deleniti aliquid, hic consequatur
+            alias
+            doloremque voluptatum quam?</p>
+          <img class="signature" src="assets/img/signature.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //ABOUT -->
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-12 intro">
+          <h1>Our Team</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia laudantium ex soluta. Totam, maiores
+            aut
+            nulla fugiat, veritatis provident qui dolor, architecto ducimus iusto est laudantium aliquam libero. Qui,
+            officiis.</p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+          <div class="service">
+            <img src={{item.image_link}} alt="">
+            <div class="content">
+              <h3>{{item.name}}</h3>
+              <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-lg-4 col-md-6" (click)="open(content,1)">
+          <div class="service">
+            <img src="https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg" alt="">
+            <div class="content">
+              <h3>John Daily</h3>
+              <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" (click)="open(content,2)">
+          <div class="service">
+            <img
+              src="https://us.123rf.com/450wm/luismolinero/luismolinero1909/luismolinero190917934/luismolinero190917934.jpg?ver=6"
+              alt="">
+            <div class="content">
+              <h3>Kamal Patel</h3>
+              <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" (click)="open(content,3)">
+          <div class="service">
+            <img src="https://www.shutterstock.com/image-photo/beautiful-smiling-woman-long-wavy-260nw-1831638373.jpg"
+              alt="">
+            <div class="content">
+              <h3>Anita Khan</h3>
+              <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 intro">
+            <h1>What we provide</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia laudantium ex soluta. Totam, maiores
+              aut
+              nulla fugiat, veritatis provident qui dolor, architecto ducimus iusto est laudantium aliquam libero. Qui,
+              officiis.</p>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+          <div class="service">
+            <img src={{item.image_link}} alt="">
+            <div class="content">
+              <h3>{{item.name}}</h3>
+              <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2>
+            </div>
+          </div>
+        </div> -->
+          <div class="col-lg-4 col-md-6" (click)="open(content,1)">
+            <div class="service">
+              <img
+                src="https://images.unsplash.com/photo-1485396003708-e7a7ad32484f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1217&q=80"
+                alt="">
+              <div class="content">
+                <h3>Hair</h3>
+                <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" (click)="open(content,2)">
+            <div class="service">
+              <img
+                src="https://images.unsplash.com/photo-1470163395405-d2b80e7450ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                alt="">
+              <div class="content">
+                <h3>Pedicure</h3>
+                <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" (click)="open(content,3)">
+            <div class="service">
+              <img
+                src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1195&q=80"
+                alt="">
+              <div class="content">
+                <h3>Manicure</h3>
+                <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" (click)="open(content,4)">
+            <div class="service">
+              <img
+                src="https://img5.goodfon.com/wallpaper/nbig/c/7c/valua-vitaly-woman-clean-healthy-curly-hair-girl-devushka-vo.jpg"
+                alt="">
+              <div class="content">
+                <h3>Makeup</h3>
+                <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" (click)="open(content,5)">
+            <div class="service">
+              <img src="https://www.theknot.com/tk-media/images/14ad38c6-173d-4252-905c-471b83f2d0a2~rs_768.h" alt="">
+              <div class="content">
+                <h3>Bridal Dressing</h3>
+                <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" (click)="open(content,6)">
+            <div class="service">
+              <img
+                src="https://www.maybelline.com/~/media/mny/us/eye-makeup/modules/shop-all-by-category/mny_clp_eye_vto.jpg"
+                alt="">
+              <div class="content">
+                <h3>Face</h3>
+                <!-- <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">{{item.description}} </p>
+
+              <h2>LKR {{item.price}}</h2> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hiring">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col-12 intro">
+          <h1>Hiring</h1>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6" *ngFor="let item of hiringServices">
+          <div class="service">
+            <img src={{item.image}} alt="" style="height: 300px;">
+            <div class="content">
+              <h3>{{item.name}}</h3>
+              <p style="height : 110px;overflow: hidden;text-overflow: ellipsis;">LKR {{item.price}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- //SERVICES -->
+  <!-- Contact US -->
+  <section id="contact-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 align-items-center">
+          <h5 class="display-5">
+            Contact Us
+          </h5>
+          <p></p>
+          <p>Email : salonTest@gmail.com</p>
+          <p>Contact Number : +94714563233</p>
+          <p>Instagram : www.instagram.com/salonR</p>
+          <p>Facebook : www.facebook.com/salonR</p>
+
+        </div>
+        <div class="col-lg-5">
+          <img src="https://i.pinimg.com/736x/9d/49/ff/9d49ff8a6e7fa1706523543752a8a1d3.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //Contact US -->
+  <!-- Payment Options -->
+  <section id="payment-options">
+    <div class="container text-center">
+      <h5 class="display-5">
+        Payment Options
+      </h5>
+      <div class="row align-items-center" style="margin-top: 32px;">
+        <div class="col-lg-4 col-md-6">
+          <div class="review">
+            <div class="d-flex">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" alt="">
+              <div class="ms-3">
+                <h5>Visa Cards</h5>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="review">
+            <div class="d-flex">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png"
+                alt="">
+              <div class="ms-3">
+                <h5>Master Cards</h5>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="review">
+            <div class="d-flex">
+              <img
+                src="https://thumbs.dreamstime.com/b/cash-delivery-cod-service-vector-red-tag-payment-fast-door-to-door-e-commerce-flat-illustration-64321954.jpg"
+                alt="">
+              <div class="ms-3">
+                <h5>Cash on Service</h5>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //Paymeny Options -->
+
+
+
+
+  <!-- TESTIMONIALS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 intro text-center">
+          <h6>Reviews</h6>
+          <h1>Listen to our customers</h1>
+          <p>There are variations of passages of Lorem Ipsum Avaialble, but the majority have suffered,, alteration in
+            soe form by injected humor, or randomise wihich</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6" *ngFor="let review of reviews">
+          <div class="review">
+            <div class="d-flex">
+              <img src={{review.image_url}} alt="">
+              <div class="ms-3 mb-4">
+                <h5>{{review.name}}</h5>
+                <small>{{review.email}}</small>
+              </div>
+            </div>
+            <p class="mt-4">
+              {{review.review}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //TESTIMONIALS -->
+
+  <section *ngIf="name != ''" id="add-review">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <form #ap="ngForm" (submit)="
+              addReview(message.value);
+                  " class="row gy-4">
+            <div class="col-12">
+              <h1>
+                Add Review
+              </h1>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quam aut veniam odit recusandae
+                vel
+                natus repellat, mollitia dicta ipsa </p>
+            </div>
+
+            <div class="form-group col-12">
+              <textarea #message name="" class="form-control" id="" cols="30" rows="10"
+                placeholder="Messagee"></textarea>
+            </div>
+            <div class="form-group col-12">
+              <button class="btn btn-brand">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="name != ''" id="appointment">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <form #ap="ngForm" (submit)="
+              createAppointment(n.value,date.value.toString(),'time.value',message.value,email.value,ap);
+                  " class="row gy-4">
+            <div class="col-12">
+              <h1>
+                Book Appointment
+              </h1>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, quam aut veniam odit recusandae
+                vel
+                natus repellat, mollitia dicta ipsa </p>
+            </div>
+            <div class="form-group col-12 mb-4">
+              <input #n type="text" class="form-control" placeholder="Full Name">
+            </div>
+            <div class="form-group col-12">
+              <input #email type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group col-12">
+              <input #date type="date" (change)="modelChanged()" placeholder="DD/MM/YYY">
+            </div>
+            <div class="form-group col-12">
+              <label>Pick your time</label>
+              <div class="form-check" *ngFor="let time of availableTimes(date.value)">
+                <input (change)="onItemChange($event)" style="height: 15px;" mdbRadio class="form-check-input"
+                  type="radio" name="flexRadioDefault" id="flexRadioDefault1" value={{time}} />
+                <label class="form-check-label" for="flexRadioDefault1"> {{time}} </label>
+              </div>
+            </div>
+            <div class="form-group col-12">
+              <textarea #message name="" class="form-control" id="" cols="30" rows="10"
+                placeholder="Messagee"></textarea>
+            </div>
+            <div class="form-group col-12">
+              <button class="btn btn-brand">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+
+</html>
